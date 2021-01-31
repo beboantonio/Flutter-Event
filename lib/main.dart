@@ -9,6 +9,7 @@ class Model {
   static List<int> favs;
   static Events events;
   static SharedPreferences prefs;
+
   static getModel() async {
     prefs = await SharedPreferences.getInstance();
     try {
@@ -21,8 +22,7 @@ class Model {
       events = null;
       await prefs.clear();
     }
-    favs =
-        prefs.getStringList("favs")?.map((s) => int.parse(s))?.toList() ?? [];
+    favs = prefs.getStringList("favs")?.map((s) => int.parse(s))?.toList() ?? [];
   }
 
   static setModel(bod) async {
